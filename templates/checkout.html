@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+
+body {
+  background: linear-gradient(to bottom, #ff5c39, #e5482c);
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 40px;
+}
+
+h1 {
+  margin-top: 0;
+  color: #fff;
+}
+
+.checkout-form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #000;
+}
+.form-row label {
+  font-weight: bold;
+  color: #000;
+}
+
+.order-summary {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  position: sticky;
+  top: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin: 20px auto 10px auto;
+}
+
+.item-image {
+  width: 100px;
+  height: 130px;
+  background-color: #ccc;
+  margin-right: 15px;
+}
+
+.item-details {
+  flex-grow: 1;
+}
+
+.item-details h5 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.item-details p {
+  margin: 0;
+  color: #666;
+}
+
+.subtotal {
+  text-align: right;
+}
+
+.btn-primary {
+  background-color: #ff5c39;
+  border-color: #ff5c39;
+}
+
+.btn-primary:hover {
+  background-color: #e5482c;
+  border-color: #e5482c;
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 20px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Checkout</h1>
+    <div class="row">
+      <div class="col-md-8">
+        <form class="checkout-form" action="/create-checkout-session" method="POST">
+          <h2>Billing Information</h2>
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" name="address" required>
+          </div>
+          <h2>Payment Information</h2>
+          <div class="form-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" class="form-control" id="card-number" name="card-number" required>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <label for="expiry">Expiration Date</label>
+              <input type="text" class="form-control" id="expiry" name="expiry" required>
+            </div>
+            <div class="col">
+              <label for="cvv">CVV</label>
+              <input type="text" class="form-control" id="cvv" name="cvv" required>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Place Order</button>
+        </form>
+      </div>
+      <div class="col-md-4">
+        <div class="order-summary">
+          <h2>Order Summary</h2>
+          {% for item in items %}
+          <div class="item">
+            <div class="item-image">
+              <img src="{{ item.img_url }}" class="item-image">
+            </div>
+            <div class="item-details">
+              <h5>{{ item.title }}</h5>
+              <p id="itemprice">{{ item.price }}₪</p>
+            </div>
+          </div>
+          {% endfor %}
+          <hr>
+          <div class="subtotal">
+            <p>Subtotal: $10</p>
+            <p>Shipping: $5</p>
+            <h4>Total: $15</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

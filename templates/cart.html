@@ -1,0 +1,272 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap" rel="stylesheet">
+    <style>
+    /* Custom CSS for the modern cart page */
+    body {
+      background-color: #eaebef;
+      padding: 20px;
+      font-family: 'Josefin Sans', sans-serif;
+    }
+
+    .cart-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .cart-header {
+      background-color: #eaebef;
+      color: #000;
+      text-align: center;
+      margin: 0 auto 10px auto;
+      padding: 20px;
+
+    }
+    .cart-item-container {
+      margin-bottom: 20px; /* Add margin-bottom for spacing */
+    }
+
+
+
+    .cart-item {
+      background-color: #fff;
+      border-radius: 0px 0px 10px 20px;
+      box-shadow: 50px 50px 50px 50px #eaebef;
+      padding: 20px;
+      margin-bottom: 20px; /* Add margin-bottom for spacing */
+    }
+
+
+    .item-image {
+      width: 120px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .item-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 20px auto 5px 25px;
+    }
+
+    .item-price {
+      font-size: 17px;
+      font-weight: 500;
+      color: #006994;
+      margin: 0 auto 30px 25px;
+    }
+
+    .item-quantity {
+      width: 50px;
+      padding: 4px 10px;
+      border-radius: 10px;
+      border: 1px solid #ced4da;
+      font-size: 15px;
+      text-align: center;
+      margin: 20px auto 10px auto;
+    }
+
+    .item-quantity:focus {
+      outline: none;
+      box-shadow: 0 0 0 6px rgba(0, 123, 255, 0.25);
+    }
+    .remove{
+        position: absolute;
+        left: 370;
+        bottom: 5;
+        border-radius: 15px;
+    }
+
+
+    .item-total {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      padding: 20px;
+    }
+    .continue-button {
+      background-color: #000080;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 50%;
+      margin: 15px auto;
+    }
+
+    .continue-button:hover {
+      background-color: #218838;
+    }
+
+    .checkout-button {
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 50%;
+      margin: 25px auto 0 auto;
+    }
+
+    .checkout-button:hover {
+      background-color: #218838;
+    }
+.empty-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  font-family: Arial, sans-serif;
+
+}
+.cart-empty {
+  text-align: center;
+}
+
+#emptyh1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+#emptyp {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.empty {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.empty:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.empty :focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 100
+}
+
+#ok_b {
+    position: relative;
+    bottom: 8px;
+    left: 6px;
+    border-radius: 15px;
+    text-align: center;
+
+
+}
+
+
+
+
+    </style>
+    <title>Cart Page</title>
+</head>
+<body>
+
+<div class="container">
+    {% if items|length == 0: %}
+    <div class="empty-container">
+        <div class="cart-empty">
+            <h1 id="h1_empty">Your Cart is Empty</h1>
+            <p id="empty_p">Add some items to your cart and start shopping!</p>
+            <a href="{{ url_for('home') }}#shop" class="btn empty">Continue Shopping</a>
+        </div>
+    </div>
+    {% endif %}
+    {% if not items|length == 0: %}
+    <div class="cart-header">
+        <h2>My Cart</h2>
+    </div>
+    {% for item in items %}
+    <div class="cart-container">
+        <div class="cart-items">
+            <div class="cart-item">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="{{ item.img_url }}" alt="Product 1" class="item-image">
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="item-name">{{ item.title }}</h4>
+                        <p class="item-price">{{ item.price }} ₪</p>
+                    </div>
+                    <div class="col-md-2">
+                        <form action="{{ url_for('cart') }}" method="POST">
+                            <input type="hidden" name="the_id" value="{{ item.id }}">
+                            <input type="number" id="quantity" name="quantity" value="{{ item.quantity }}" min="1" max="10"
+                                   class="item-quantity">
+                            <button type="submit" class="btn btn-outline-primary btn-sm" id="ok_b">OK</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <a href="{{ url_for('remove',item_id=item.id) }}">
+                        <button class="btn btn-outline-danger btn-sm remove"><span class="material-symbols-outlined">delete
+</span></button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="cart-summary">
+        <div class="row">
+            <div class="col-md-12 total">
+                <h4 class="item-total">Total: {{ total_price }} ₪ </h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a href="{{ url_for('create_checkout_session') }}" class="btn btn-primary btn-block checkout-button">
+                    Proceed to Checkout</a>
+            </div>
+            <div class="col-md-12">
+                <a href="{{ url_for('home') }}#shop" class="btn btn-block continue-button">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

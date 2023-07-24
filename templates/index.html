@@ -1,0 +1,306 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FABRIQ</title>
+    <link href="static/css/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap" rel="stylesheet">
+</head>
+<style>
+    body{
+    font-family: 'Josefin Sans', sans-serif;
+    }
+    .home_div{
+        height: 800px;
+        width: 100%;
+        background-image: url('https://images.pexels.com/photos/1223649/pexels-photo-1223649.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')
+        background-position:center top;
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover;
+    }
+    .open_page{
+     margin-left: auto;
+    margin-right: auto;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    }
+
+    #fabriq{
+    padding-top: 170px;
+    text-align: center;
+    font-size: 120px;
+    font-family: 'Libre Baskerville', serif;
+    margin: 0 auto;
+    }
+    .shop{
+    margin-top: 70px;
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    }
+
+    /* Change navbar background color */
+
+    /* Change navbar font color and font family */
+    .navbar .navbar-nav .nav-link {
+      color: #000; /* White font color */
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 14px; /* Replace with your desired font size */
+      font-weight: 500;
+    }
+    .popup-btn {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .cart-icon {
+      cursor: pointer;
+    }
+
+    /* Custom styles for the modal */
+    .modal-content {
+      border-radius: 0;
+      background-color: #fff;
+    }
+    .modal-header {
+      border-bottom: none;
+      padding: 20px;
+      background-color: #fff;
+    }
+    .modal-title {
+      font-size: 24px;
+      font-family: 'Josefin Sans', sans-serif;
+      color: #000;
+      margin: 0 auto;
+
+    }
+    .modal-body {
+      padding: 20px;
+      color: #000;
+      background-color: #fff;
+      font-family: 'Josefin Sans', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+
+    }
+    .btn-secondary {
+      background-color: #aaa;
+      color: #fff;
+      border: none;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+    }
+    .loginb{
+        text-align: center;
+        margin: 10px;
+    }
+    a{
+        text-decoration: none;
+    }
+    .continue{
+        margin-top: 100px;
+        height: 800px;
+        width: cover;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: left;
+
+    }
+    #lifestyle{
+        text-align: center;
+        color: white;
+        font-size: 80px;
+        padding-top: 100px;
+    }
+      .glass-card1 {
+      position: relative;
+      right: 100;
+      top: 30;
+      max-width: 300px;
+      background-color: rgba(255, 255, 255, 0.2); /* Set the background color with transparency */
+      backdrop-filter: blur(10px); /* Apply the glass effect with a blur */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .glass-card2 {
+      position: relative;
+      bottom: 100;
+      left: 500;
+      max-width: 300px;
+      background-color: rgba(255, 255, 255, 0.2); /* Set the background color with transparency */
+      backdrop-filter: blur(10px); /* Apply the glass effect with a blur */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+
+    .glass-card1 .card-content {
+      padding: 20px;
+      height: 300px;
+    }
+     .glass-card2 .card-content {
+      padding: 20px;
+      height: 300px;
+    }
+
+    .glass-card1 h5 {
+      margin-bottom: 10px;
+    }
+        .glass-card2 h5 {
+      margin-bottom: 10px;
+    }
+    /* Responsive styles */
+    @media (max-width: 576px) {
+      .modal-dialog {
+        margin: 0;
+        max-width: 100%;
+      }
+      .modal-content {
+        border-radius: 0;
+      }
+    }
+
+
+
+
+
+</style>
+
+<body>
+<!-- The pop-up window (modal) -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel" style="text-align:center;">Welcome!<br>
+                    Please register/Log-in to continue. </h5>
+            </div>
+            <div class="modal-body">
+                <a href="{{ url_for('login') }}">
+                    <button type="button" class="btn btn-info loginb">Login</button>
+                </a>
+                <a href="{{ url_for('register') }}">
+                    <button type="button" class="btn btn-info loginb">Register</button>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div class="home_div"
+     style="background-image: url('https://images.pexels.com/photos/1223649/pexels-photo-1223649.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')">
+    <div class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#shop">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+            </ul>
+            {% if not current_user.is_authenticated %}
+            <ul class="navbar-nav ml-auto" style="padding-right: 10px;">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-shopping-cart" data-toggle="modal" data-target="#myModal"></i>
+                </li>
+            </ul>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Log out</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('cart') }}"><i class="fas fa-shopping-cart"></i></a>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="open_page">
+        <h1 id="fabriq">FABRIQ</h1>
+    </div>
+</div>
+
+<div id="shop" class="container shop">
+    <h2 style="font-size: 40px; font-family: 'Josefin Sans', sans-serif; text-align: center; margin: 40px auto;">Our
+        Products
+    </h2>
+    <div class="container">
+        <div class="row">
+            {% for item in all_items %}
+            <div class="col-4 col-md-4 col-lg-4 mb-4">
+                <a href="{{ url_for('product', item_id=item.id) }}">
+                    <div class="card">
+                        <img src="{{ item.img_url }}" class="card-img-top" alt="Image 1">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.title }}</h5>
+                            <p class="card-text">{{ item.price }}</p>
+                            <form id="myForm" method="POST" action="{{ url_for('add_to_cart') }}">
+                                <input type="hidden" name="hidden_value" value="{{ item.id }}">
+                                <button type="submit" class="btn btn-outline-primary">Add to Cart</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="continue"
+     style="background-image: url('https://images.pexels.com/photos/12661192/pexels-photo-12661192.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+    <h1 id="lifestyle"> WE SELL A LIFESTYLE</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="glass-card1">
+                <div class="card-content">
+                    <h5 class="card-title">Contagious</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="glass-card2">
+                <div class="card-content">
+                    <h5 class="card-title">The 'WOW' Effect</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>

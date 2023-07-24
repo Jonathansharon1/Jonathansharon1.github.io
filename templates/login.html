@@ -1,0 +1,96 @@
+<!-- login_page.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    body {
+      background-color: #f7f8fa;
+      height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      max-width: 400px;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+    .container h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .form-group label {
+      font-weight: 600;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+      background-color: #f8f9fa;
+      border: none;
+      border-radius: 3px;
+      padding: 10px;
+      font-size: 16px;
+      color: #333333;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    .form-group input[type="text"]:focus,
+    .form-group input[type="password"]:focus {
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+      border-radius: 3px;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+        h4{
+      font-size: 15px;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 20px;
+      }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Login</h2>
+    <form method="POST" action="/login">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <h5 style="color: #cc3300; text-align: center; font-size: 16px; margin: 12px auto;">{{ message }}</h5>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <h4>Don't have user? <a href="{{ url_for('register') }}">Register</a> </h4>
+    </form>
+</div>
+</body>
+</html>

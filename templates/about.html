@@ -1,0 +1,55 @@
+{% include "header.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About FABRIQ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap" rel="stylesheet">
+</head>
+<style>
+body{
+    font-family: 'Josefin Sans', sans-serif;
+}
+.about_us{
+    margin-right: auto;
+    margin-left: auto;
+    height: 800px;
+    width: 100%;
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 30px;
+ }
+ h1{
+    padding-top: 300px;
+    text-align: center;
+    font-size: 100px;
+    margin: 0 auto;
+    color: white;
+ }
+ .story{
+    text-align: center;
+    margin: 30px;
+ }
+</style>
+<body>
+<div class="about_us"
+     style="background-image:url('https://images.pexels.com/photos/2274898/pexels-photo-2274898.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')">
+    <h1>
+        About FABRIQ
+    </h1>
+</div>
+<div class="story" style="background-image: url({{ url_for('static', filename='img/bbblurry.svg')}})">
+    <h2>
+        about us, about us... <br>
+         <br>
+        First of all!
+    </h2>
+    <h1 style="color: black; font-size: 60px; padding-top: 50px; padding-bottom: 50px;"> WHAT ABOUT YOU?</h1>
+    <p> </p>
+</div>
+
+
+</body>
+</html>
